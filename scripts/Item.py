@@ -1,5 +1,5 @@
 class Item:
-    def _init_ (self, item_id, name, quantity, price, supplier_id):
+    def __init__ (self, item_id, name, quantity, price, supplier_id):
         self.item_id = item_id            # Unique identifier for the item
         self.name = name                  # Name of the tool
         self.quantity = quantity          # Quantity in stock

@@ -1,5 +1,5 @@
 class Supplier:
-    def _init_ (self, Supplier_id, Comapany_name, address, sales_person): 
+    def __init__ (self, Supplier_id, Comapany_name, address, sales_person): 
         self.supplier_id = Supplier_id             # Unique identifier for Supplier
         self.comapany_name = Comapany_name         # Comapany name 
         self.address = address                     # Address

@@ -6,14 +6,72 @@ class Item:
         self.price = price                # Price of the tool
         self.supplier_id = supplier_id    # Supplier identifier
 
-    def updatequantity(self, amount):   # Update quantity
+     # Getter and Setter for item_id
+    @property
+    def item_id(self):
+        return self._item_id
+
+    @item_id.setter
+    def item_id(self, value):
+        if value > 0:
+            self._item_id = value
+        else:
+            raise ValueError("Item ID must be positive.")
+
+    # Getter and Setter for name
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and value:
+            self._name = value
+        else:
+            raise ValueError("Name must be a non-empty string.")
+
+    # Getter and Setter for quantity
+    @property
+    def quantity(self):
+        return self._quantity
+
+    @quantity.setter
+    def quantity(self, value):
+        if value >= 0:
+            self._quantity = value
+        else:
+            raise ValueError("Quantity cannot be negative.")
+
+    # Getter and Setter for price
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if value >= 0:
+            self._price = value
+        else:
+            raise ValueError("Price cannot be negative.")
+
+    # Getter and Setter for supplier_id
+    @property
+    def supplier_id(self):
+        return self._supplier_id
+
+    @supplier_id.setter
+    def supplier_id(self, value):
+        if value > 0:
+            self._supplier_id = value
+        else:
+            raise ValueError("Supplier ID must be positive.")
+
+    def update_quantity(self, amount):    # Update quantity
         self.quantity += amount
 
-    def updateprice(self, new_price):   # Update price
+    def update_price(self, new_price):    # Update price
         self.price = new_price
 
-    def str(self): # String representation and Return value
-       
-        return "Item[ID: {self.item_id}, Name: {self.name}, Quantity: {self.quantity}, Price: {self.price}, Supplier ID: {self.supplier_id}]"
-    
-    
+    def __str__(self):                    # String representation
+        return ("Item[ID: {self.item_id}, Name: {self.name}, Quantity: {self.quantity}, "
+                "Price: {self.price}, Supplier ID: {self.supplier_id}]")

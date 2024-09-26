@@ -73,5 +73,8 @@ class Item:
         self.price = new_price
 
     def __str__(self):                    # String representation
-        return ("Item[ID: {self.item_id}, Name: {self.name}, Quantity: {self.quantity}, "
-                "Price: {self.price}, Supplier ID: {self.supplier_id}]")
+        return (f"Item[ID: {self.item_id}, Name: {self.name}, Quantity: {self.quantity}, "
+                f"Price: {self.price}, Supplier ID: {self.supplier_id}]")
+    
+    def __repr__(self):
+        return self.__str__()

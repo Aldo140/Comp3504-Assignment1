@@ -75,7 +75,7 @@ class InventoryManager():
         matches = []
 
         for item in self.stock:
-            # if item.getID().__contains__(searchable) or item.getName().__contains__(searchable):
-            print(item.str())
-            matches.append(item)
-        return matches
+            if item.getID().__contains__(searchable) or item.getName().__contains__(searchable):
+              print(item.str())
+              matches.append(item)
+            return matches

@@ -1,6 +1,6 @@
 class Item:
     def __init__ (self, item_id, name, quantity, price, supplier_id):
-        self.item_id = item_id            # Unique identifier for the item
+        self.item_id = int(item_id)          # Unique identifier for the item
         self.name = name                  # Name of the tool
         self.quantity = quantity          # Quantity in stock
         self.price = price                # Price of the tool
@@ -13,8 +13,8 @@ class Item:
 
     @item_id.setter
     def item_id(self, value):
-        if value > 0:
-            self._item_id = value
+        if int(value) > 0:
+            self._item_id = int(value)
         else:
             raise ValueError("Item ID must be positive.")
 
@@ -50,7 +50,7 @@ class Item:
     @price.setter
     def price(self, value):
         if value >= 0:
-            self._price = value
+            self._price = int(value)
         else:
             raise ValueError("Price cannot be negative.")
 
@@ -62,7 +62,7 @@ class Item:
     @supplier_id.setter
     def supplier_id(self, value):
         if value > 0:
-            self._supplier_id = value
+            self._supplier_id = int(value)
         else:
             raise ValueError("Supplier ID must be positive.")
 

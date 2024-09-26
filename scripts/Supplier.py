@@ -1,6 +1,6 @@
 class Supplier:
     def __init__ (self, Supplier_id, Comapany_name, address, sales_person): 
-        self.supplier_id = Supplier_id             # Unique identifier for Supplier
+        self.supplier_id = int(Supplier_id)         # Unique identifier for Supplier
         self.comapany_name = Comapany_name         # Comapany name 
         self.address = address                     # Address
         self.sales_person = sales_person           # Sales person
@@ -12,8 +12,8 @@ class Supplier:
 
     @supplier_id.setter
     def supplier_id(self, value):
-        if value > 0:
-            self._supplier_id = value
+        if int(value) > 0:
+            self._supplier_id = int(value)
         else:
             raise ValueError("Supplier ID must be positive.")
 

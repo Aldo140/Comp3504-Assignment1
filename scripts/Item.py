@@ -2,7 +2,7 @@ class Item:
     def __init__ (self, item_id, name, quantity, price, supplier_id):
         self.item_id = int(item_id)          # Unique identifier for the item
         self.name = name                  # Name of the tool
-        self.quantity = quantity          # Quantity in stock
+        self.quantity = int(quantity)          # Quantity in stock
         self.price = price                # Price of the tool
         self.supplier_id = supplier_id    # Supplier identifier
 
@@ -37,8 +37,8 @@ class Item:
 
     @quantity.setter
     def quantity(self, value):
-        if value >= 0:
-            self._quantity = value
+        if int(value) >= 0:
+            self._quantity = int(value)
         else:
             raise ValueError("Quantity cannot be negative.")
 

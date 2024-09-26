@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-import Item, Supplier, Order_Class, copy
+import Item, Supplier, copy
+from Order_Class import Order
 from file_manager import read_items, read_suppliers
 class InventoryManager():
     stock = []
@@ -38,44 +39,46 @@ class InventoryManager():
             self.suppliers.add(Item(supplier[0], supplier[1], supplier[2], supplier[3]))
 
     def removeStock(self, id, quantity):
-        item = self.getItem(self, id)
-        item.updatequantity(item.getQuantity() - quantity)
-        if item.getQuantity() < 0:
+        item = self.getItem(id)
+        item.update_quantity(-quantity)
+        if item.quantity < 0:
             print("Quantity < 0 | oh no")
 
     def getItem(self, id):
         for item in self.stock:
-            if self.stock.getID() == id:
+            if item.item_id == id:
                 return item
             
     def addStock(self, id, quantity):
         item = self.getItem(self, id)
-        item.updatequantity(item.getQuantity() + quantity)
+        item.updatequantity(item.quantity + quantity)
 
     def getStockWarnings(self):
         low = []
         for item in self.stock:
-            if item.getQuantity() <= 10:
-                low.append(item.getID())
+            if item.quantity <= 10:
+                low.append(item.item_id)
         return low
     
     def dateTicker(self):
-        shiftDate += 1
+        self.shiftDate += 1
         toOrder = self.getStockWarnings()
         for id in toOrder:
-            self.addOrderItem(self, id)
+            self.addOrderItem(id)
 
     def addOrderItem(self, id):
         item = self.getItem(id)
-        amount = 30 - item.getQuantity()
-        self.currentOrder.add_item(item.getDescription(), amount, item.getSupplier(), item.getPrice_per_item())
+        amount = 30 - item.quantity
+        self.currentOrder = Order()
+        self.currentOrder.add_item(item.name, amount, item.supplier_id, item.price)
+        self.currentOrder.write_order_to_file()
 
 
     def searchItem(self, searchable):
         matches = []
 
         for item in self.stock:
-            if item.getID().__contains__(searchable) or item.getName().__contains__(searchable):
-              print(item.str())
-              matches.append(item)
-            return matches
+            if str(item.item_id).__contains__(searchable) or item.name.__contains__(searchable):
+                print(item)
+                matches.append(item)
+        return matches

@@ -4,7 +4,7 @@ class Item:
         self.name = name                  # Name of the tool
         self.quantity = int(quantity)          # Quantity in stock
         self.price = price                # Price of the tool
-        self.supplier_id = supplier_id    # Supplier identifier
+        self.supplier_id = int(supplier_id)   # Supplier identifier
 
      # Getter and Setter for item_id
     @property
@@ -61,7 +61,7 @@ class Item:
 
     @supplier_id.setter
     def supplier_id(self, value):
-        if value > 0:
+        if int(value) > 0:
             self._supplier_id = int(value)
         else:
             raise ValueError("Supplier ID must be positive.")

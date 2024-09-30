@@ -5,25 +5,25 @@ S# General To-Do's
 	- [x] Determine Programming Language
 	- [ ] 
 	- [ ] ?
-- [ ] Sprint 1
-	- [ ] Sprint 1 Plan/Planning
-- [ ] Sprint 2
-	- [ ] Sprint 2 Plan/Planning
+- [x] Sprint 1
+	- [x] Sprint 1 Plan/Planning
+- [x] Sprint 2
+	- [x] Sprint 2 Plan/Planning
 
 # Programing To-Do's
 ## Minimum Viable Product
-- [ ] Read Files
-- [ ] Write Files
-- [ ] Item Object/Class
-- [ ] Supplier Object/Class
-- [ ] Order Object/Class
-	- [ ] Order ID generator
-- [ ] Stock Manager
-	- [ ] Stock Mods (sales/theft/etc.)
-	- [ ] Search Feature (Id/Name)
-	- [ ] Stock Monitor/Order Generator (runs after inventory changes **STOCK < 10**)
+- [x] Read Files
+- [x] Write Files
+- [x] Item Object/Class
+- [x] Supplier Object/Class
+- [x] Order Object/Class
+	- [x] Order ID generator
+- [x] Stock Manager
+	- [x] Stock Mods (sales/theft/etc.)
+	- [x] Search Feature (Id/Name)
+	- [x] Stock Monitor/Order Generator (runs after inventory changes **STOCK < 10**)
 	- [ ] Day ticker (Ends Day)
-- [ ] Basic cmd line style interface
+- [x] Basic cmd line style interface
 ## Extra Features
 - [ ] "Pretty" UI (GUI? or Text Menu Interface)
 - [ ] Adding items from interface

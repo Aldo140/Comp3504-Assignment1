@@ -1,7 +1,10 @@
 from datetime import datetime, timedelta
-import Item, Supplier, copy
+import copy
 from Order_Class import Order
-from file_manager import read_items, read_suppliers
+from file_manager import FileManager
+from splicer import Splicer
+from Item import Item
+from Supplier import Supplier
 class InventoryManager():
     stock = []
     suppliers = []
@@ -9,13 +12,21 @@ class InventoryManager():
     date = []
     shiftDate = 0
 
-    def __init__(self):
+    def __init__(self, dataLocation):
+        characters = [";", '\n']
+        splicer = Splicer(characters)
+        itemsFile = FileManager(dataLocation + 'items.txt')
+        suppliersFile = FileManager(dataLocation + 'suppliers.txt')
         # self.date = datetime.datetime.today()
         self.date.append(datetime.today().year)
         self.date.append(datetime.today().month)
         self.date.append(datetime.today().day)
-        self.stock = read_items()
-        self.suppliers = read_suppliers()
+        itemsData = itemsFile.read_file()
+        suppliersData = suppliersFile.read_file()
+        for i in itemsData:
+            self.stock.append(Item(*splicer.splice(i)))
+        for i in suppliersData:
+            self.suppliers.append(Supplier(*splicer.splice(i)))
 
     def getDate(self):
         # print(datetime.now() + timedelta(2))

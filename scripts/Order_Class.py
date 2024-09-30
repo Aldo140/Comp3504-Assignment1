@@ -8,13 +8,13 @@ class Order:
     It can also save order details to a text file.
     """
     
-    def __init__(self):
+    def __init__(self, date):
         """
         Sets up the Order with a random ID, the current date, 
         an empty list for items, and a starting total cost of zero.
         """
         self.order_id = random.randint(10000, 99999)  # Generate a random 5-digit order ID
-        self.date_ordered = datetime.now().strftime('%B %d, %Y')  # Get the current date
+        self.date_ordered = date
         self.items_ordered = []  # List to hold ordered items
         self.total_cost = 0.0  # Starting total cost of the order
 
@@ -22,16 +22,10 @@ class Order:
         """
         Adds an item to the order and updates the total cost.
         """
-        self.items_ordered.append((description, amount, supplier))  # Add item to the order
+        self.items_ordered.append([description, amount, supplier])  # Add item to the order
         self.total_cost += amount * price_per_item  # Update the total cost
 
-    def generate_order_line(self, description, quantity, supplier, price):
-        """
-        Adds an order line if stock is below 10.
-        """
-        if quantity < 10:
-            amount_ordered = 30 - quantity  # Calculate how much to order
-            self.add_item(description, amount_ordered, supplier, price)  # Add item to the order
+
 
     def write_order_to_file(self, file_name='orders.txt'):
         """

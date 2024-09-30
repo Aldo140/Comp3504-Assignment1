@@ -76,6 +76,7 @@ class InventoryManager():
     def dateTicker(self):
         self.shiftDate += 1
         toOrder = self.getStockWarnings()
+        self.currentOrder = Order((self.date + timedelta(self.shiftDate)).strftime('%B %d, %Y'))
         for id in toOrder:
             self.addOrderItem(id)
         self.currentOrder.write_order_to_file()
@@ -83,7 +84,6 @@ class InventoryManager():
     def addOrderItem(self, id):
         item = self.getItem(id)
         amount = 30 - item.quantity
-        self.currentOrder = Order()#(self.date + timedelta(self.shiftDate)).strftime('%B %d, %Y'))
         self.currentOrder.add_item(item.name, amount, self.searchSupplier(str(item.supplier_id)).company_name, item.price)
 
     def searchSupplier(self, searchable):

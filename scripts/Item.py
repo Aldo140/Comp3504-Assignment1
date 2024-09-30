@@ -49,8 +49,8 @@ class Item:
 
     @price.setter
     def price(self, value):
-        if value >= 0:
-            self._price = int(value)
+        if float(value) >= 0:
+            self._price = float(value)
         else:
             raise ValueError("Price cannot be negative.")
 

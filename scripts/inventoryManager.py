@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-import copy
+# import copy
 from Order_Class import Order
 from file_manager import FileManager
 from splicer import Splicer
@@ -9,18 +9,19 @@ class InventoryManager():
     stock = []
     suppliers = []
     currentOrder = None
-    date = []
+    date = None
     shiftDate = 0
 
     def __init__(self, dataLocation):
         characters = [";", '\n']
+        self.date = datetime.now()
         splicer = Splicer(characters)
         itemsFile = FileManager(dataLocation + 'items.txt')
         suppliersFile = FileManager(dataLocation + 'suppliers.txt')
         # self.date = datetime.datetime.today()
-        self.date.append(datetime.today().year)
-        self.date.append(datetime.today().month)
-        self.date.append(datetime.today().day)
+        # self.date.append(datetime.today().year)
+        # self.date.append(datetime.today().month)
+        # self.date.append(datetime.today().day)
         itemsData = itemsFile.read_file()
         suppliersData = suppliersFile.read_file()
         for i in itemsData:
@@ -29,7 +30,7 @@ class InventoryManager():
             self.suppliers.append(Supplier(*splicer.splice(i)))
 
     def getDate(self):
-        # print(datetime.now() + timedelta(2))
+        # print(da + timedelta(2))
         return self.date
     
     def setDate(self, newDate):
@@ -51,23 +52,24 @@ class InventoryManager():
 
     def removeStock(self, id, quantity):
         item = self.getItem(id)
-        item.update_quantity(-quantity)
+        item.quantity = item.quantity - int(quantity)
         if item.quantity < 0:
             print("Quantity < 0 | oh no")
 
     def getItem(self, id):
         for item in self.stock:
-            if item.item_id == id:
+            if item.item_id == int(id):
                 return item
             
     def addStock(self, id, quantity):
-        item = self.getItem(self, id)
-        item.updatequantity(item.quantity + quantity)
+        item = self.getItem(id)
+        item.quantity = item.quantity + int(quantity)
 
     def getStockWarnings(self):
         low = []
         for item in self.stock:
             if item.quantity <= 10:
+                print(item.item_id, item.quantity)
                 low.append(item.item_id)
         return low
     
@@ -76,15 +78,20 @@ class InventoryManager():
         toOrder = self.getStockWarnings()
         for id in toOrder:
             self.addOrderItem(id)
+        self.currentOrder.write_order_to_file()
 
     def addOrderItem(self, id):
         item = self.getItem(id)
         amount = 30 - item.quantity
-        self.currentOrder = Order()
-        self.currentOrder.add_item(item.name, amount, item.supplier_id, item.price)
-        self.currentOrder.write_order_to_file()
+        self.currentOrder = Order()#(self.date + timedelta(self.shiftDate)).strftime('%B %d, %Y'))
+        self.currentOrder.add_item(item.name, amount, self.searchSupplier(str(item.supplier_id)).company_name, item.price)
 
-
+    def searchSupplier(self, searchable):
+        for supplier in self.suppliers:
+            if str(supplier.supplier_id).__contains__(searchable):
+                # print(suppliers)
+                return supplier
+    
     def searchItem(self, searchable):
         matches = []
 

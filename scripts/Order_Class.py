@@ -53,4 +53,8 @@ class Order:
             file.write(f"Total cost:           ${self.total_cost:.2f}\n")
             file.write("=" * 60 + "\n")
 
-
+    def get_order_details(self):
+        """
+        Returns the list of items ordered, including description, amount, and supplier.
+        """
+        return self.items_ordered

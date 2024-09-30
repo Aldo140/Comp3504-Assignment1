@@ -136,3 +136,12 @@ Supplier:             50004
 
 Total cost:           $710.00
 ============================================================
+ORDER ID.:            11912
+Date Ordered:         September 29, 2024
+
+Item description:     Widgets
+Amount ordered:       20
+Supplier:             50004
+
+Total cost:           $710.00
+============================================================

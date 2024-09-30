@@ -1,0 +1,138 @@
+ORDER ID.: 22261
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 84190
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 20078
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 33086
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 99516
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 87174
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.:            79648
+Date Ordered:         September 29, 2024
+
+Item description:     Red Pen
+Amount ordered:       25
+Supplier:             GoodStationary Inc.
+
+Item description:     A4 Paper
+Amount ordered:       21
+Supplier:             BestPapers
+
+Total cost:           $775.00
+============================================================
+ORDER ID.:            94906
+Date Ordered:         September 29, 2024
+
+Item description:     Widgets
+Amount ordered:       20
+Supplier:             50004
+
+Total cost:           $710.00
+============================================================
+ORDER ID.:            66022
+Date Ordered:         September 29, 2024
+
+Item description:     Red Pen
+Amount ordered:       25
+Supplier:             GoodStationary Inc.
+
+Item description:     A4 Paper
+Amount ordered:       21
+Supplier:             BestPapers
+
+Total cost:           $775.00
+============================================================
+ORDER ID.:            45694
+Date Ordered:         September 29, 2024
+
+Item description:     Widgets
+Amount ordered:       20
+Supplier:             50004
+
+Total cost:           $710.00
+============================================================
+ORDER ID.: 10065
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.: 50510
+Date Ordered: September 29, 2024
+
+Item description: Widgets
+Amount ordered: 20
+Supplier: 50004
+
+Total cost: $710.00
+============================================================
+ORDER ID.:            88887
+Date Ordered:         September 29, 2024
+
+Item description:     Red Pen
+Amount ordered:       25
+Supplier:             GoodStationary Inc.
+
+Item description:     A4 Paper
+Amount ordered:       21
+Supplier:             BestPapers
+
+Total cost:           $775.00
+============================================================
+ORDER ID.:            73153
+Date Ordered:         September 29, 2024
+
+Item description:     Widgets
+Amount ordered:       20
+Supplier:             50004
+
+Total cost:           $710.00
+============================================================

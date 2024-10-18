@@ -5,7 +5,7 @@ class Order:
     """
     The Order class creates an order when stock is low. 
     It generates an order ID, stores the date, items, and calculates the total cost.
-    It can also save order details to a text file.
+    It can also save order details to a list and return it.
     """
     
     def __init__(self, date):
@@ -17,35 +17,53 @@ class Order:
         self.date_ordered = date
         self.items_ordered = []  # List to hold ordered items
         self.total_cost = 0.0  # Starting total cost of the order
+        self.supplier_distribution = {}  # Store distribution for suppliers
 
-    def add_item(self, description, amount, supplier, price_per_item):
+    def set_supplier_distribution(self, distribution):
         """
-        Adds an item to the order and updates the total cost.
+        Sets the percentage distribution of the order across suppliers.
+        Example: {'SupplierA': 0.1, 'SupplierB': 0.9, 'SupplierC': 0.0}
         """
-        self.items_ordered.append([description, amount, supplier])  # Add item to the order
-        self.total_cost += amount * price_per_item  # Update the total cost
+        if abs(sum(distribution.values()) - 1.0) > 1e-6:
+            raise ValueError("The total percentage distribution must equal 100% (1.0).")
+        self.supplier_distribution = distribution
 
-
-
-    def write_order_to_file(self, file_name='orders.txt'):
+    def add_item(self, description, total_amount, price_per_item):
         """
-        Saves the order details to a text file.
+        Adds items to the order based on the distribution across suppliers
+        and updates the total cost.
         """
-        with open(file_name, 'a') as file:
-            # Write Order ID and Date
-            file.write(f"ORDER ID.:            {self.order_id}\n")
-            file.write(f"Date Ordered:         {self.date_ordered}\n\n")
-            
-            # Write all items ordered
-            for item in self.items_ordered:
-                description, amount, supplier = item
-                file.write(f"Item description:     {description}\n")
-                file.write(f"Amount ordered:       {amount}\n")
-                file.write(f"Supplier:             {supplier}\n\n")
-            
-            # Write the total cost
-            file.write(f"Total cost:           ${self.total_cost:.2f}\n")
-            file.write("=" * 60 + "\n")
+        if not self.supplier_distribution:
+            raise ValueError("Supplier distribution has not been set.")
+
+        for supplier, percentage in self.supplier_distribution.items():
+            amount = int(total_amount * percentage)  # Calculate amount for each supplier
+            if amount > 0:
+                self.items_ordered.append([description, amount, supplier])
+                self.total_cost += amount * price_per_item
+
+    def append_order_to_data(self):
+        """
+        Appends the order details to a list and returns it.
+        """
+        data = []  # List to hold order details
+        
+        # Append Order ID and Date
+        data.append(f"ORDER ID.:            {self.order_id}")
+        data.append(f"Date Ordered:         {self.date_ordered}")
+        
+        # Append all items ordered
+        for item in self.items_ordered:
+            description, amount, supplier = item
+            data.append(f"Item description:     {description}")
+            data.append(f"Amount ordered:       {amount}")
+            data.append(f"Supplier:             {supplier}")
+        
+        # Append the total cost
+        data.append(f"Total cost:           ${self.total_cost:.2f}")
+        data.append("=" * 60)
+        
+        return data
 
     def get_order_details(self):
         """
